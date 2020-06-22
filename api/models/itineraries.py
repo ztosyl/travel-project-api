@@ -7,7 +7,8 @@ class Itinerary(models.Model):
   # define fields
   # https://docs.djangoproject.com/en/3.0/ref/models/fields/
   date = models.DateField(max_length=100)
-  duration = models.CharField(max_length=100)
+  start_time = models.TimeField(max_length=100)
+  end_time = models.TimeField(max_length=100)
   point_of_interest = models.CharField(max_length=100)
   address = models.CharField(max_length=100)
   description = models.CharField(max_length=100000)

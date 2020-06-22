@@ -14,12 +14,12 @@ class Itineraries(generics.ListCreateAPIView):
     def get(self, request, pk):
         """Index Request"""
         # print(request.session)
-        itineraries = Patient.objects.filter(plan=pk)
+        itineraries = Itinerary.objects.filter(plan=pk)
         data = ItinerarySerializer(itineraries, many=True).data
         return Response(data)
 
     serializer_class = ItinerarySerializer
-    def post(self, request):
+    def post(self, request, pk):
         """Post request"""
         # print(request.data)
         itinerary = ItinerarySerializer(data=request.data['itinerary'])
@@ -40,7 +40,7 @@ class ItineraryDetail(generics.RetrieveUpdateDestroyAPIView):
     def patch(self, request, pk):
         """Update Request"""
         itinerary = get_object_or_404(Itinerary, pk=pk)
-        ms = ItinerarySerializer(itinerary, data=request.data['itinerary'])
+        ms = ItinerarySerializer(itinerary, data=request.data['itinerary'], partial=True)
         if ms.is_valid():
             ms.save()
             return Response(ms.data)

@@ -9,6 +9,8 @@ class Plan(models.Model):
   destination = models.CharField(max_length=100)
   dep_airport_code = models.CharField(max_length=3)
   arr_airport_code = models.CharField(max_length=3)
+  start_date = models.DateField()
+  end_date = models.DateField()
   # flight TO destination departure time
   flight_to_dep_time = models.TimeField()
   # flight TO destination arrival time
