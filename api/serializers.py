@@ -1,14 +1,20 @@
 from django.contrib.auth import get_user_model
 from rest_framework import serializers
 
-from .models.mango import Mango
+from .models.itineraries import Itinerary
+from .models.plans import Plan
 from .models.user import User
 
 
-class MangoSerializer(serializers.ModelSerializer):
+class PlanSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Mango
-        fields = ('id', 'name', 'color', 'ripe', 'owner')
+        model = Plan
+        fields = '__all__'
+
+class ItinerarySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Itinerary
+        fields = '__all__'
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:

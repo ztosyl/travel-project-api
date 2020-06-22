@@ -26,9 +26,10 @@ if os.getenv('ENV') == 'development':
   DB = {
       'ENGINE': 'django.db.backends.postgresql',
       'NAME': 'travel_db',
-      'USERNAME': 'postgres',
+      'USER': 'postgres',
       'PASSWORD': 'Africansafari1!'
   }
+  CORS_ORIGIN_WHITELIST = ['http://localhost:7165']
   DEBUG = True
 else:
   DB = dj_database_url.config()
@@ -50,7 +51,7 @@ SECRET_KEY = os.getenv('SECRET')
 
 INSTALLED_APPS = [
     # Our custom apps
-    'travelplans',
+    'api',
     # DRF
     'rest_framework',
     'rest_framework.authtoken',
